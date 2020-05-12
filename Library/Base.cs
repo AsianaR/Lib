@@ -14,7 +14,7 @@ namespace Library
     public partial class Base : Form
     {
 
-        int count = -1; // номер человека с книгой в базе
+        int count = 0; // номер человека с книгой в базе
 
         public Base()
         {
@@ -30,16 +30,21 @@ namespace Library
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            try
+
+            
+            if(count >= Program.InfoBase.Count)
             {
-                count++;
+                button1.Visible = false;
+                count--;
+            }
+            else           
+            {
+                
                 textBox1.Text = Program.InfoBase[count].Name + " " + Program.InfoBase[count].Surname;
                 textBox2.Text = Program.InfoBase[count].MyBook;
+                count++;
             }
-            catch
-            {
-                throw new Exception();
-            }
+            
         }
 
         private void Base_Load(object sender, EventArgs e)
@@ -49,7 +54,7 @@ namespace Library
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Program.InfoBase.RemoveAt(count);
+          //  Program.InfoBase.RemoveAt(count);
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -60,7 +65,7 @@ namespace Library
             {
                 if (elements.BookName == ToFind)
                 {
-                    textBox4.Text = elements.BookName;
+                    textBox4.Text = elements.Name + elements.Surname;
                     return;
                 }
             }

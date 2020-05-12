@@ -13,9 +13,9 @@ namespace Library
 {
     public partial class Base : Form
     {
- 
-        string[] data;
-        int count =-1;
+
+        int count = -1; // номер человека с книгой в базе
+
         public Base()
         {
             InitializeComponent();
@@ -23,45 +23,48 @@ namespace Library
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Main fr1 = new Main();
+            Menu fr1 = new Menu();
             fr1.Show();
             this.Hide();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
-            count++;
-
-            if (count < data.Length)
+            try
             {
-                string tempor = data[count];
-                string[] cut = tempor.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                textBox1.Text = cut[0];
-                if (cut.Length == 2)
-                {
-                    textBox2.Text = cut[1];
-                }
-                if(cut.Length>2)
-                {
-
-                    for(int i=1; i<cut.Length; i++)
-                    {
-                        textBox2.Text = textBox2.Text + " " + cut[i] + " ";
-                    }
-                }
+                count++;
+                textBox1.Text = Program.InfoBase[count].Name + " " + Program.InfoBase[count].Surname;
+                textBox2.Text = Program.InfoBase[count].MyBook;
+            }
+            catch
+            {
+                throw new Exception();
             }
         }
 
         private void Base_Load(object sender, EventArgs e)
         {
-            data = File.ReadAllLines("Rented.txt");
-            button1.PerformClick();
+            button1.PerformClick(); 
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            Program.InfoBase.RemoveAt(count);
+        }
 
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            string ToFind = textBox3.Text;
+
+            foreach (Author elements in Program.authors)
+            {
+                if (elements.BookName == ToFind)
+                {
+                    textBox4.Text = elements.BookName;
+                    return;
+                }
+            }
+            textBox4.Text = "Nothing was found";
         }
     }
 }

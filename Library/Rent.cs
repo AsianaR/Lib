@@ -13,6 +13,8 @@ namespace Library
 {
     public partial class Rent : Form
     {
+
+        
         public Rent()
         {
             InitializeComponent();
@@ -20,30 +22,43 @@ namespace Library
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Main fr1 = new Main();
+            Menu fr1 = new Menu();
             fr1.Show();
             this.Hide();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            
-            var text = listBox1.SelectedItem + " " + listBox2.SelectedItem;
-            using (var writer = new StreamWriter("rented.txt", true))
-            {
-                writer.WriteLine(text);
-            }
+            User tempBase = new User();
+            string[] cut = new string[2];
+            cut = listBox1.SelectedItem.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            tempBase.Name = cut[0];
+            tempBase.Surname = cut[1];
+            tempBase.MyBook = listBox2.SelectedItem.ToString();
 
-            listBox1.SelectedItem = "";
-            listBox2.SelectedItem = "";
+            Program.InfoBase.Add(tempBase);
         }
 
         private void Rent_Load(object sender, EventArgs e)
         {
-            string[] users = File.ReadAllLines("names.txt");
-            listBox1.Items.AddRange(users);
-            string[] books = File.ReadAllLines("books.txt");
-            listBox2.Items.AddRange(books);
+
+            List<string> _names = new List<string>();
+            List<string> _books = new List<string>();
+
+            foreach (User elements in Program.users)
+            {
+                _names.Add(elements.Name + " " + elements.Surname);
+                listBox1.Items.AddRange(_names.ToArray());
+            }
+
+            foreach (Author elements in Program.authors)
+            {
+                _books.Add(elements.BookName);
+                listBox2.Items.AddRange(_books.ToArray());
+            }
+
+            
+            
         }
     }
 }

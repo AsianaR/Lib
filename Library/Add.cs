@@ -13,6 +13,7 @@ namespace Library
 {
     public partial class Add : Form
     {
+
         public Add()
         {
             InitializeComponent();
@@ -20,33 +21,28 @@ namespace Library
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Main fr1 = new Main();
+            Menu fr1 = new Menu();
             fr1.Show();
             this.Hide();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var book = textBox1.Text;
-            var name = textBox2.Text;
-
+          
             if (textBox1.Text != "")
             {
-                using (var writer = new StreamWriter("books.txt", true))
-                {
-                    writer.WriteLine(book);
-                }
+                Author author = new Author();
+                string[] cut = new string[2];
+                author.InBase(textBox1.Text);
+                cut = textBox1.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                author.BookName = cut[2];
+                Program.authors.Add(author);
             }
             if(textBox2.Text != "")
             {
-                using (var writer = new StreamWriter("names.txt", true))
-                {
-                    writer.WriteLine(name);
-                }
-            }
-            if(textBox1.Text != "" && textBox2.Text != "")
-            {
-                MessageBox.Show("All fields are empty");
+                User user = new User();
+                user.InBase(textBox2.Text);
+                Program.users.Add(user);
             }
 
             textBox1.Clear();

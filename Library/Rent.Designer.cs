@@ -90,17 +90,17 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(205, 119);
+            this.listBox1.Location = new System.Drawing.Point(205, 131);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(271, 30);
+            this.listBox1.Size = new System.Drawing.Size(271, 17);
             this.listBox1.TabIndex = 5;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(205, 210);
+            this.listBox2.Location = new System.Drawing.Point(205, 211);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(271, 30);
+            this.listBox2.Size = new System.Drawing.Size(271, 17);
             this.listBox2.TabIndex = 6;
             // 
             // Rent

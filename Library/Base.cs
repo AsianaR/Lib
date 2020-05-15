@@ -54,7 +54,7 @@ namespace Library
 
         private void Button3_Click(object sender, EventArgs e)
         {
-          //  Program.InfoBase.RemoveAt(count);
+          Program.InfoBase.RemoveAt(count);
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace Library
             {
                 if (elements.BookName == ToFind)
                 {
-                    textBox4.Text = elements.Name + elements.Surname;
+                    textBox4.Text = elements.Name +" " + elements.Surname;
                     return;
                 }
             }

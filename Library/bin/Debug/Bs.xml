@@ -1,1 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LibUsers>
+  <User>
+    <Name>Li</Name>
+    <Surname>Kan</Surname>
+    <MyBook>Space</MyBook>
+  </User>
+</LibUsers>

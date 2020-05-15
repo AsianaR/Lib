@@ -36,6 +36,8 @@ namespace Library
             tempBase.Surname = cut[1];
             tempBase.MyBook = listBox2.SelectedItem.ToString();
 
+            listBox1.Items.Remove(listBox1.SelectedItem);
+            listBox2.Items.Remove(listBox2.SelectedItem);
             Program.InfoBase.Add(tempBase);
         }
 

@@ -54,7 +54,11 @@ namespace Library
 
         private void Button3_Click(object sender, EventArgs e)
         {
-          Program.InfoBase.RemoveAt(count);
+            if(Program.InfoBase.Count <= count)
+                count--;
+            if (count>=0)
+            Program.InfoBase.RemoveAt(count);
+            
         }
 
         private void Button4_Click(object sender, EventArgs e)
